@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Example</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div id="left-panel">
+    <div class="menu">
+      <h2>Menu</h2>
+    <ul>
+      <li onclick="showContent('home')"><i class="fas fa-home"></i> Home</li>
+      <li onclick="showContent('contact')"><i class="fas fa-phone"></i> Contact</li>
+      <li onclick="showContent('information')">&nbsp;<i class="fas fa-info" style="font-size: 25px;"></i> Information</li>
+      <li onclick="showContent('guide')"><i class="fas fa-book-open"></i> Guide</li>
+    </ul>
+    </div>
+  </div>
+  
+  <div id="content">
+    <center><h1 style="font-size: 80px;">Welcome</h1></center>
+    <center><p style="font-size: 30px;">Select a component from the left panel to view its content.</p></center>
+  </div>
+  
+  <script>
+    function showContent(component) {
+      var contentDiv = document.getElementById('content');
+      
+      // Clear previous content
+      contentDiv.innerHTML = '';
+      
+      // Create new content based on the selected component
+      switch (component) {
+        case 'home':
+          contentDiv.innerHTML = '<h2 style="font-size:40px;">Home</h2><h2 style="font-size:30px;">Welcome to our Web Development Website!</h2><p style="font-size:18px;">We are a team of passionate web developers dedicated to creating stunning and functional websites that exceed your expectations. Whether you need a personal blog, an e-commerce platform, or a corporate website, we have got you covered.</p><p>Our services include:</p><p>1. Custom Website Development: We craft unique websites tailored to your specific needs and requirements. From eye-catching designs to seamless user experiences, we ensure your website stands out from the crowd.</p><p>2. Responsive Design: In today mobile-driven world, we understand the importance of having a website that looks great on all devices. Our responsive designs guarantee optimal viewing experiences across smartphones, tablets, and desktops.</p><p>3. E-commerce Solutions: Looking to sell your products or services online? We specialize in creating secure and user-friendly e-commerce platforms that drive sales and boost your online presence.</p><p>4. Content Management Systems (CMS): Take control of your website with a user-friendly CMS. We can integrate popular CMS platforms like WordPress, Drupal, or Joomla, empowering you to update and manage your website effortlessly.</p><p>Ready to take your online presence to the next level? Contact us today to discuss your web development needs and let us transform your ideas into a compelling online reality.</p><p>Remember, your website is the digital face of your business, and were here to make it shine!</p>';
+          break;
+        case 'contact':
+          contentDiv.innerHTML = '<h2 style="font-size:40px;">Contact</h2><p>Thank you for your interest in our web development services. We would be delighted to assist you with your project. Please feel free to reach out to us using the contact information below:</p><h3>Phone:</h3><p>+1 (123) 456-7890</p><h3>Email:</h3><p>info@example.com</p><h3>Address:</h3><p>123 Web Development Street</p><p>City, State, ZIP Code</p><p>Our team is available during business hours to answer any questions you may have and provide you with the necessary information to get started. We look forward to hearing from you!</p>';
+          break;
+        case 'information':
+          contentDiv.innerHTML = '<h2 style="font-size:40px;">Information</h2><p>Welcome to our web development information page. Here, you will find valuable insights and resources related to web development and its various aspects. Whether you are a beginner or an experienced developer, we have got something for everyone.</p><h3>Topics Covered:</h3><p>1. HTML5 and CSS3 essentials</p><p>2. JavaScript frameworks and libraries</p><p>3.Responsive web design techniques</p><p>4. Backend development with Node.js</p><p>5. Database integration and management</p><p>6. Security best practices</p><p>7. Performance optimization</p><p>8. UI/UX design principles</p><p>Our aim is to provide you with up-to-date information, tutorials, and tips to help you stay at the forefront of web development. Stay tuned for regular updates and new content!</p>';
+          break;
+        case 'guide':
+          contentDiv.innerHTML = '<h2 style="font-size:40px;">Guide</h2><p>Welcome to our comprehensive web development guide! Whether you are a beginner taking your first steps into the world of web development or an experienced developer looking to expand your skills, this guide is here to help you.</p><h3>We will provide you:</h3><p>Front-end development essentials</li><p>Backend programming languages and frameworks</li><p>Database management and integration</li><p>Responsive design and mobile optimization</li><p>API integration and data retrieval</li><p>Web performance optimization techniques</li><p>Security best practices for web applications</li><p>Version control and collaboration tools</li><p>Throughout this guide, we will dive into each topic, providing insights, tips, and resources to enhance your web development skills. Whether you are interested in creating dynamic user interfaces or building scalable backend systems, we have got you covered.</p>';
+          break;
+        default:
+          contentDiv.innerHTML = '<h2>Page not found</h2><p>The selected component does not exist.</p>';
+      }
+      
+      // Set the active class on the selected component
+      var navLinks = document.querySelectorAll('#left-panel li');
+      for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].classList.remove('active');
+      }
+      
+      document.querySelector('#left-panel li[data-component="' + component + '"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>
